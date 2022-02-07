@@ -17,7 +17,10 @@ defmodule PP.Impls.Aetherus do
       |> Task.await(:infinity)
 
     partition2 =
-      nums |> List.myers_difference(partition1) |> Keyword.get_values(:del) |> List.flatten()
+      nums
+      |> List.myers_difference(partition1)
+      |> Keyword.get_values(:del)
+      |> List.flatten()
 
     {
       {sum_target + sum_diff, sum - sum_target - sum_diff},
@@ -26,7 +29,11 @@ defmodule PP.Impls.Aetherus do
     }
   end
 
-  @spec closest_subset_sum([pos_integer()], non_neg_integer(), non_neg_integer()) ::
+  @spec closest_subset_sum(
+          [{item :: pos_integer(), index :: non_neg_integer()}],
+          non_neg_integer(),
+          non_neg_integer()
+        ) ::
           {integer(), integer(), [pos_integer()]}
   defp closest_subset_sum([], sum_target, length_target) do
     {-sum_target, -length_target, []}
