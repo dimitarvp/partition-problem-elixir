@@ -40,8 +40,6 @@ defmodule PP.Impls.Aetherus do
         solution
 
       nil ->
-        Process.put(:misses, Process.get(:misses, 0) + 1)
-
         {sum_diff1, len_diff1, solution1} =
           closest_subset_sum(t, sum_target - h, length_target - 1)
 
