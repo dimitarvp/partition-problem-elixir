@@ -5,6 +5,14 @@ defmodule PP.Impls.Aetherus do
           {partition1 :: [pos_integer()], partition2 :: [pos_integer()]}
         }
   def solve(nums) do
+
+    # Reversely sort the nums
+    # so that subset-sum can converge faster
+    nums =
+      nums
+      |> Enum.sort()
+      |> Enum.reverse()
+
     sum = Enum.sum(nums)
     len = length(nums)
     sum_target = div(sum, 2)
@@ -36,6 +44,11 @@ defmodule PP.Impls.Aetherus do
         ) ::
           {integer(), integer(), [pos_integer()]}
   defp closest_subset_sum([], sum_target, length_target) do
+    {-sum_target, -length_target, []}
+  end
+
+  # Truncates the cases
+  defp closest_subset_sum(_, sum_target, length_target) when sum_target <= 0 do
     {-sum_target, -length_target, []}
   end
 
