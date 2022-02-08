@@ -22,4 +22,9 @@ defmodule PP do
       end
     end)
   end
+
+  def impl_aetherus(list) when is_list(list) do
+    {{sum1, sum2}, _, {part1, part2}} = PP.Impls.Aetherus.solve(list)
+    {part1, part2, sum1, sum2}
+  end
 end
