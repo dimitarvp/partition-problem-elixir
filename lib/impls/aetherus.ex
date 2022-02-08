@@ -8,10 +8,7 @@ defmodule PP.Impls.Aetherus do
 
     # Reversely sort the nums
     # so that subset-sum can converge faster
-    nums =
-      nums
-      |> Enum.sort()
-      |> Enum.reverse()
+    nums = Enum.sort(nums, :desc)
 
     sum = Enum.sum(nums)
     len = length(nums)
